@@ -1,0 +1,44 @@
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+local Window = Library.CreateLib("Destruction Simulator Script!", "DarkTheme")
+
+--main
+local Money = Window:NewTab("Money")
+local MoneySection = Money:NewSection("Money")
+
+
+MoneySection:NewButton("Give 100M Coins", "Gives you 100M coins", function()
+    game:GetService("ReplicatedStorage").Remotes.generateBoost:FireServer("Coins", 480, 99999999)
+end)
+
+MoneySection:NewButton("Give 100k Coins", "Gives you 100k Coins", function()
+    game:GetService("ReplicatedStorage").Remotes.generateBoost:FireServer("Coins", 480, 99999)
+end)
+
+MoneySection:NewButton("Give 10k Coins", "Gives you 10k Coins", function()
+    game:GetService("ReplicatedStorage").Remotes.generateBoost:FireServer("Coins", 480, 9999)
+end)
+
+
+local Levels = Window:NewTab("Levels")
+local LevelsSection = Levels:NewSection("Levels")
+
+LevelsSection:NewButton("Give 10 Levels", "Gives you 10 levels", function()
+    game:GetService("ReplicatedStorage").Remotes.generateBoost:FireServer("Levels", 480, 10)
+end)
+
+LevelsSection:NewButton("Give 15 Levels", "Gives you 15 levels", function()
+    game:GetService("ReplicatedStorage").Remotes.generateBoost:FireServer("Levels", 480, 15)
+end)
+
+
+-- LOCAL PLAYER
+local Player = Window:NewTab("Player")
+local PlayerSection = Player:NewSection("Player")
+
+PlayerSection:NewSlider("walkspeed", "SPEED!!!!", 500, 16, function(s) -- 500 (MaxValue) | 0 (MinValue)
+    game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = s
+end)
+
+PlayerSection:NewSlider("Jumppower", "not working::(", 350, 50, function(s) -- 500 (MaxValue) | 0 (MinValue)
+    game.Players.LocalPlayer.Character.Humanoid.Jumppower = s
+end)
